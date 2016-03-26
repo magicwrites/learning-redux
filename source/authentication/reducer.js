@@ -1,22 +1,14 @@
 import * as authenticationActions from './actions';
 
 const stateByDefault = {
-  user: null,
-  form: {
-    email: '',
-    password: ''
-  }
+  user: null
 };
 
 const authenticationReducer = (state = stateByDefault, action = {}) => {
   switch (action.type) {
     case authenticationActions.types.logout:
       return {
-        user: null,
-        form: { // todo: should this be a part of the state, or we hide it in react components?
-          email: '',
-          password: ''
-        }
+        user: null
       };
     case authenticationActions.types.login:
       if (action.username === 'test@test.test' && action.password === 'test@test.test') {
@@ -25,18 +17,14 @@ const authenticationReducer = (state = stateByDefault, action = {}) => {
             id: 1,
             email: 'test@test.test',
             token: 'S5kjs2PYu13'
-          },
-          form: {
-            email: '',
-            password: ''
           }
         };
       } else {
+        const nowAt = new Date();
+
         return {
           user: null,
-          form: Object.assign({}, state.form, {
-            isError: true
-          })
+          userRejectedAt: nowAt.toISOString()
         };
       }
     default:

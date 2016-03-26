@@ -1,5 +1,5 @@
 import React from 'react';
-import AuthenticationLoginForm from './authentication/react/loginForm';
+import AuthenticationLoginForm from './authentication/react/loginFormContainer';
 
 const Application = () => (
   <div>
