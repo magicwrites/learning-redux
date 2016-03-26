@@ -1,7 +1,8 @@
-var path = require('path')
+var path = require('path');
 
 module.exports = {
   entry: './source',
+  devtool: 'source-map',
   output: {
     path: 'builds',
     filename: 'bundle.js'
@@ -24,7 +25,7 @@ module.exports = {
       loader: 'babel',
       include: path.resolve(__dirname, 'source'),
       query: {
-        presets: ['es2015']
+        presets: ['react', 'es2015']
       }
     }, {
       test: /\.scss/,
@@ -36,4 +37,4 @@ module.exports = {
       include: path.resolve(__dirname, 'source')
     }]
   }
-}
+};

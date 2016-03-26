@@ -1,11 +1,11 @@
-import assert from 'assert'
-import * as authenticationActions from './../actions'
-import authenticationReducer from './../reducer'
+import assert from 'assert';
+import * as authenticationActions from './../actions';
+import authenticationReducer from './../reducer';
 
 describe('logout process', () => {
   describe('when user data is present in the state', () => {
     it('should clear the user data', () => {
-      let stateInitial = {
+      const stateInitial = {
         user: {
           id: 1,
           email: 'test@test.test',
@@ -15,12 +15,12 @@ describe('logout process', () => {
           email: '',
           password: ''
         }
-      }
+      };
 
-      let actionForLogout = authenticationActions.logout()
-      let stateAfterwards = authenticationReducer(stateInitial, actionForLogout)
+      const actionForLogout = authenticationActions.logout();
+      const stateAfterwards = authenticationReducer(stateInitial, actionForLogout);
 
-      assert.equal(stateAfterwards.user, null)
-    })
-  })
-})
+      assert.equal(stateAfterwards.user, null);
+    });
+  });
+});

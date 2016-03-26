@@ -1,6 +1,14 @@
-import * as authenticationActions from './actions'
+import * as authenticationActions from './actions';
 
-const authenticationReducer = (state = { user: null, form: { email: '', password: '' } }, action = {}) => {
+const stateByDefault = {
+  user: null,
+  form: {
+    email: '',
+    password: ''
+  }
+};
+
+const authenticationReducer = (state = stateByDefault, action = {}) => {
   switch (action.type) {
     case authenticationActions.types.logout:
       return {
@@ -9,7 +17,7 @@ const authenticationReducer = (state = { user: null, form: { email: '', password
           email: '',
           password: ''
         }
-      }
+      };
     case authenticationActions.types.login:
       if (action.username === 'test@test.test' && action.password === 'test@test.test') {
         return {
@@ -22,18 +30,18 @@ const authenticationReducer = (state = { user: null, form: { email: '', password
             email: '',
             password: ''
           }
-        }
+        };
       } else {
         return {
           user: null,
           form: Object.assign({}, state.form, {
             isError: true
           })
-        }
+        };
       }
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default authenticationReducer
+export default authenticationReducer;
