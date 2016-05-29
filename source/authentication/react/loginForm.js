@@ -15,7 +15,7 @@ const LoginForm = ({ user, userRejectedAt, onSubmit }) => {
       <span>{ userRejectedAt }</span><br />
 
       <strong>user:</strong>
-      <span>{ user }</span><br />
+      <span>{ user ? user.email : 'no user' }</span><br />
 
       <input
         type="text"

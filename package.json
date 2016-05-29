@@ -8,9 +8,9 @@
     "lint": "eslint --ignore-pattern builds/**/*.js --ext .js,.jsx source/**",
     "lint-fix": "eslint --ignore-pattern builds/**/*.js --ext .js,.jsx source/** --fix",
     "start-build": "./node_modules/.bin/webpack",
-    "start-webpack": "start bash -c \"./node_modules/.bin/webpack --watch\"",
-    "start-server": "start bash -c \"./node_modules/.bin/live-server --entry-file=index.html --host=localhost\"",
-    "start": "npm run start-webpack && npm run start-server"
+    "start-webpack": "bash -c \"./node_modules/.bin/webpack --watch\"",
+    "start-server": "bash -c \"./node_modules/.bin/live-server --entry-file=index.html --host=localhost\"",
+    "start": "concurrently \"npm run start-webpack\" \"npm run start-server\""
   },
   "author": "Maciej Mazur",
   "license": "none",
@@ -37,6 +37,7 @@
     "webpack": "^1.12.14"
   },
   "dependencies": {
+    "concurrently": "^2.1.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-redux": "^4.4.1",
